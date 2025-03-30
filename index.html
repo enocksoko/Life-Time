@@ -3,194 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enock Soko - Professional Portfolio</title>
+    <title>Enock Soko - Comprehensive Timeline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #27ae60;
-            --light: #f8f9fa;
+            --academic: #3498db;
+            --professional: #2ecc71;
+            --leadership: #e67e22;
+            --tech: #9b59b6;
+            --global: #f1c40f;
         }
 
         body {
             font-family: 'Segoe UI', system-ui;
-            line-height: 1.6;
             margin: 0;
-            background: var(--light);
+            background: #f8f9fa;
+            line-height: 1.6;
         }
 
-        .container {
+        .timeline-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
-        }
-
-        .header {
-            text-align: center;
-            padding: 40px 0;
-            background: var(--primary);
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        .badge-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .section {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-meter {
-            background: #e0e0e0;
-            height: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 5px;
-        }
-
-        .certification-card {
-            padding: 15px;
-            border-left: 4px solid var(--secondary);
-            margin: 10px 0;
-        }
-
-        .timeline-item {
             position: relative;
-            padding-left: 30px;
-            margin: 20px 0;
         }
 
-        .timeline-item::before {
-            content: "•";
-            color: var(--accent);
+        .timeline-line {
             position: absolute;
-            left: 0;
-            font-size: 1.5em;
+            left: 50%;
+            width: 4px;
+            background: #ddd;
+            height: 98%;
+            transform: translateX(-50%);
+        }
+
+        .milestone {
+            width: 45%;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+            background: white;
+        }
+
+        .milestone:hover {
+            transform: translateY(-5px);
+        }
+
+        .left {
+            margin-right: 55%;
+            border-left: 5px solid;
+        }
+
+        .right {
+            margin-left: 55%;
+            border-right: 5px solid;
+        }
+
+        .academic { border-color: var(--academic); }
+        .professional { border-color: var(--professional); }
+        .leadership { border-color: var(--leadership); }
+        .tech { border-color: var(--tech); }
+        .global { border-color: var(--global); }
+
+        .year-tag {
+            position: absolute;
+            top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .left .year-tag { right: -85px }
+        .right .year-tag { left: -85px }
+
+        .badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 10px 0;
+            display: inline-block;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line { display: none; }
+            .milestone {
+                width: 100%;
+                margin: 20px 0;
+            }
+            .left, .right { margin: 20px 0 }
+            .year-tag { 
+                position: static; 
+                margin-bottom: 10px;
+                display: inline-block;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <h1>Enock Soko</h1>
-            <p class="subtitle">Actuarial Scientist & Tech Innovator</p>
-            <div class="badge-container">
-                <div class="badge">Top 10 DHL Gradstar</div>
-                <div class="badge">Golden Key Member</div>
-                <div class="badge">Blockchain Specialist</div>
-            </div>
-        </div>
-    </div>
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
 
-    <div class="container">
-        <!-- Education -->
-        <div class="section">
-            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div class="grid">
-                <div>
-                    <h3>University of Cape Town</h3>
-                    <p>Post Graduate Diploma in Actuarial Science (Current)</p>
-                </div>
-                <div>
-                    <h3>University of Johannesburg</h3>
-                    <p>BSc Actuarial Science</p>
-                    <p>Advanced Diploma in Blockchain (Distinction)</p>
-                </div>
+        <!-- 2000 - Birth -->
+        <div class="milestone left academic">
+            <div class="year-tag">2000</div>
+            <h2><i class="fas fa-baby"></i> The Journey Begins</h2>
+            <p>Born in South Africa</p>
+        </div>
+
+        <!-- 2018 - Academic Start -->
+        <div class="milestone right academic">
+            <div class="year-tag">2018</div>
+            <h2><i class="fas fa-university"></i> Academic Foundation</h2>
+            <p>Began BSc in Mathematical Science (Actuarial Science)<br>
+            <em>University of Johannesburg</em></p>
+            <div class="badge" style="background: var(--academic)">
+                Nedbank Scholarship Awarded
             </div>
         </div>
 
-        <!-- Professional Credentials -->
-        <div class="section">
-            <h2><i class="fas fa-award"></i> Certifications</h2>
-            <div class="grid">
-                <div class="certification-card">
-                    <h4>Aspire Leaders Program (Harvard)</h4>
-                    <p>2024 | Leadership Development</p>
-                </div>
-                <div class="certification-card">
-                    <h4>AI in 4IR (NQF 5)</h4>
-                    <p>Advanced Artificial Intelligence Certification</p>
-                </div>
-                <!-- Add more certification cards -->
+        <!-- 2020 - Tutoring -->
+        <div class="milestone left leadership">
+            <div class="year-tag">2020</div>
+            <h2><i class="fas fa-chalkboard-teacher"></i> Educational Initiative</h2>
+            <p>Founded Enock Soko Tutoring Services</p>
+            <div class="badge" style="background: var(--professional)">
+                50+ Students Mentored
             </div>
         </div>
 
-        <!-- Technical Skills -->
-        <div class="section">
-            <h2><i class="fas fa-laptop-code"></i> Technical Skills</h2>
-            <div class="grid">
-                <div>
-                    <p>Python <span class="skill-level">(Intermediate)</span></p>
-                    <div class="skill-meter">
-                        <div class="skill-progress" style="width: 70%"></div>
-                    </div>
-                </div>
-                <div>
-                    <p>R Programming <span class="skill-level">(Advanced)</span></p>
-                    <div class="skill-meter">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <!-- Add more skills -->
-            </div>
+        <!-- 2021 - Leadership -->
+        <div class="milestone right leadership">
+            <div class="year-tag">2021</div>
+            <h2><i class="fas fa-users-cog"></i> Leadership Ascension</h2>
+            <p>Elected President of Golden Key UJ Chapter</p>
+            <ul>
+                <li>Managed R30,000 community budget</li>
+                <li>Won Key Chapter Award</li>
+            </ul>
         </div>
 
-        <!-- Leadership -->
-        <div class="section">
-            <h2><i class="fas fa-users"></i> Leadership</h2>
-            <div class="timeline-item">
-                <h3>President, ASABA UJ Chapter</h3>
-                <p>03/2021 - 12/2024</p>
+        <!-- 2022 - Global Engagement -->
+        <div class="milestone left global">
+            <div class="year-tag">2022</div>
+            <h2><i class="fas fa-globe"></i> Global Recognition</h2>
+            <p>YOUNGA Youth Delegate (Top 5,000 worldwide)</p>
+            <div class="badge" style="background: var(--global)">
+                UN SDG Advocate
+            </div>
+            <p>Deloitte Vacation Work:<br>
+            Developed solutions for employee financial concerns</p>
+        </div>
+
+        <!-- 2023 - Academic Peak -->
+        <div class="milestone right academic">
+            <div class="year-tag">2023</div>
+            <h2><i class="fas fa-graduation-cap"></i> Dual Qualifications</h2>
+            <p>Completed with Distinction:
                 <ul>
-                    <li>Organized mentorship programs for 100+ students</li>
-                    <li>Won Best University Chapter Award</li>
+                    <li>BSc Actuarial Science</li>
+                    <li>Advanced Blockchain Diploma</li>
                 </ul>
-            </div>
-            <div class="timeline-item">
-                <h3>YOUNGA Youth Delegate</h3>
-                <p>Represented 130 countries in UN SDG initiatives</p>
+            </p>
+            <div class="badge" style="background: var(--tech)">
+                Blockchain Specialist
             </div>
         </div>
 
-        <!-- Actuarial Exams -->
-        <div class="section">
-            <h2><i class="fas fa-file-alt"></i> Actuarial Progress</h2>
-            <div class="grid">
-                <div>
-                    <h4>A112: Business Economics</h4>
-                    <p>Exemption Achieved</p>
-                </div>
-                <div>
-                    <h4>N111: Foundation Practice</h4>
-                    <p>ASSA Certification</p>
-                </div>
+        <!-- 2024 - Professional Growth -->
+        <div class="milestone left professional">
+            <div class="year-tag">2024</div>
+            <h2><i class="fas fa-briefcase"></i> Professional Acceleration</h2>
+            <p>Actuarial Modelling Trainee at Claxon Actuaries</p>
+            <ul>
+                <li>Python & Machine Learning</li>
+                <li>IFRS17 Implementation</li>
+            </ul>
+            <div class="badge" style="background: var(--professional)">
+                ASSA Exams in Progress
             </div>
         </div>
+
+        <!-- 2024 - Current Studies -->
+        <div class="milestone right academic">
+            <div class="year-tag">2024</div>
+            <h2><i class="fas fa-chart-line"></i> Advanced Studies</h2>
+            <p>BSc Honours in Mathematical Statistics<br>
+            <em>University of Free State</em></p>
+            <div class="badge" style="background: var(--academic)">
+                Current Focus: Predictive Analytics
+            </div>
+        </div>
+
+        <!-- 2024 - Global Leadership -->
+        <div class="milestone left global">
+            <div class="year-tag">2024</div>
+            <h2><i class="fas fa-rocket"></i> Global Leadership</h2>
+            <p>Aspire Leaders Program (Harvard)<br>
+            Global Youth Ambassador (TheirWorld)</p>
+            <div class="badge" style="background: var(--global)">
+                Emerging Leader
+            </div>
+        </div>
+
     </div>
-
-    <script>
-        // Add interactive elements here
-    </script>
 </body>
 </html>

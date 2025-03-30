@@ -1,88 +1,122 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enock Soko - Life Milestones</title>
+    <title>Enock Soko - Milestones</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            padding: 20px;
+            background: #f0f2f5;
         }
+
         .container {
-            width: 80%;
-            margin: auto;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .timeline {
-            position: relative;
             max-width: 800px;
-            margin: auto;
+            margin: 0 auto;
         }
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #333;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .milestone {
-            padding: 20px;
+
+        .timeline-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             position: relative;
-            width: 50%;
-            background-color: white;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
-        .left {
-            left: 0;
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
         }
-        .right {
-            left: 50%;
+
+        .year {
+            color: #e74c3c;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
-        .milestone img {
-            width: 100%;
-            border-radius: 6px;
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        p {
+            color: #34495e;
+            margin: 10px 0;
+        }
+
+        .highlight {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .badge {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
             margin-top: 10px;
+        }
+
+        .progress {
+            height: 4px;
+            background: #ecf0f1;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 75%;
+            height: 100%;
+            background: #27ae60;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Enock Soko - Life Milestones</h1>
-        <div class="timeline">
-            <div class="milestone left">
-                <h3>2000 - Born</h3>
-                <p>Born in [Your Birthplace]</p>
+        <h1>🌟 Life Milestones</h1>
+
+        <!-- 2000 - Born -->
+        <div class="timeline-item">
+            <div class="year">2000</div>
+            <h2>Welcome to the World 🌍</h2>
+            <p>Born in <span class="highlight">[Your Birthplace]</span></p>
+            <div class="badge">New Chapter Begins</div>
+        </div>
+
+        <!-- 2018 - University -->
+        <div class="timeline-item">
+            <div class="year">2018</div>
+            <h2>Academic Journey Begins 🎓</h2>
+            <p>Started studying <span class="highlight">Actuarial Science</span></p>
+            <p class="highlight">University of [Your University Name]</p>
+        </div>
+
+        <!-- 2020 - Tutoring Service -->
+        <div class="timeline-item">
+            <div class="year">2020</div>
+            <h2>Entrepreneurial Venture 💼</h2>
+            <p>Founded <span class="highlight">Enock Soko Tutoring Services</span></p>
+            <p>"Empowering students through mentorship"</p>
+            <div class="progress">
+                <div class="progress-bar"></div>
             </div>
-            <div class="milestone right">
-                <h3>2018 - Started University</h3>
-                <p>Began studying Actuarial Science.</p>
-            </div>
-            <div class="milestone left">
-                <h3>2020 - Founded Enock Soko Tutoring Services</h3>
-                <p>Empowering students through mentorship.</p>
-                <img src="your-image-url.jpg" alt="Tutoring Service Launch">
-            </div>
-            <div class="milestone right">
-                <h3>2023 - Selected for Quantium's Graduate Dinner</h3>
-                <p>Recognized for data analytics excellence.</p>
-                <img src="your-image-url.jpg" alt="Quantium Dinner">
-            </div>
-            <div class="milestone left">
-                <h3>2024 - Women in Leadership Training</h3>
-                <p>Developed a program to empower women leaders.</p>
-                <img src="your-image-url.jpg" alt="Leadership Training">
-            </div>
+            <div class="badge">In Progress</div>
         </div>
     </div>
 </body>

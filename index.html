@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enock Soko - Comprehensive Timeline</title>
+    <title>Enock Soko - Interactive Timeline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -12,206 +12,341 @@
             --leadership: #e67e22;
             --tech: #9b59b6;
             --global: #f1c40f;
+            --dark-bg: #2c3e50;
+            --text-light: #ecf0f1;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui;
+            font-family: 'Inter', system-ui;
             margin: 0;
-            background: #f8f9fa;
+            background: var(--text-light);
             line-height: 1.6;
+            color: var(--dark-bg);
         }
 
         .timeline-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem;
             position: relative;
         }
 
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            width: 4px;
-            background: #ddd;
-            height: 98%;
-            transform: translateX(-50%);
+        .timeline-nav {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--dark-bg);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            opacity: 1;
+            transform: scale(1.3);
         }
 
         .milestone {
-            width: 45%;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-            transition: transform 0.3s ease;
+            width: 100%;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 1rem;
             background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
         }
 
         .milestone:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
-        .left {
-            margin-right: 55%;
-            border-left: 5px solid;
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            position: relative;
+            padding-left: 2rem;
         }
 
-        .right {
-            margin-left: 55%;
-            border-right: 5px solid;
-        }
-
-        .academic { border-color: var(--academic); }
-        .professional { border-color: var(--professional); }
-        .leadership { border-color: var(--leadership); }
-        .tech { border-color: var(--tech); }
-        .global { border-color: var(--global); }
-
-        .year-tag {
+        .timeline-year::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            font-weight: bold;
-            font-size: 1.2em;
-            background: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 80%;
+            background: var(--academic);
+            border-radius: 4px;
         }
 
-        .left .year-tag { right: -85px }
-        .right .year-tag { left: -85px }
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
 
-        .badge {
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin: 10px 0;
-            display: inline-block;
-            color: white;
+        .content-block {
+            padding: 1rem;
+            border-left: 2px solid #eee;
+        }
+
+        .skill-meter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .skill-item {
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: var(--professional);
+        }
+
+        .interactive-timeline {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--academic), var(--professional));
         }
 
         @media (max-width: 768px) {
-            .timeline-line { display: none; }
             .milestone {
-                width: 100%;
-                margin: 20px 0;
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
             }
-            .left, .right { margin: 20px 0 }
-            .year-tag { 
-                position: static; 
-                margin-bottom: 10px;
-                display: inline-block;
+            
+            .timeline-year {
+                padding-left: 0;
+            }
+            
+            .timeline-year::before {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="timeline-container">
-        <div class="timeline-line"></div>
-
-        <!-- 2000 - Birth -->
-        <div class="milestone left academic">
-            <div class="year-tag">2000</div>
-            <h2><i class="fas fa-baby"></i> The Journey Begins</h2>
-            <p>Born in South Africa</p>
-        </div>
-
-        <!-- 2018 - Academic Start -->
-        <div class="milestone right academic">
-            <div class="year-tag">2018</div>
-            <h2><i class="fas fa-university"></i> Academic Foundation</h2>
-            <p>Began BSc in Mathematical Science (Actuarial Science)<br>
-            <em>University of Johannesburg</em></p>
-            <div class="badge" style="background: var(--academic)">
-                Nedbank Scholarship Awarded
-            </div>
-        </div>
-
-        <!-- 2020 - Tutoring -->
-        <div class="milestone left leadership">
-            <div class="year-tag">2020</div>
-            <h2><i class="fas fa-chalkboard-teacher"></i> Educational Initiative</h2>
-            <p>Founded Enock Soko Tutoring Services</p>
-            <div class="badge" style="background: var(--professional)">
-                50+ Students Mentored
-            </div>
-        </div>
-
-        <!-- 2021 - Leadership -->
-        <div class="milestone right leadership">
-            <div class="year-tag">2021</div>
-            <h2><i class="fas fa-users-cog"></i> Leadership Ascension</h2>
-            <p>Elected President of Golden Key UJ Chapter</p>
-            <ul>
-                <li>Managed R30,000 community budget</li>
-                <li>Won Key Chapter Award</li>
-            </ul>
-        </div>
-
-        <!-- 2022 - Global Engagement -->
-        <div class="milestone left global">
-            <div class="year-tag">2022</div>
-            <h2><i class="fas fa-globe"></i> Global Recognition</h2>
-            <p>YOUNGA Youth Delegate (Top 5,000 worldwide)</p>
-            <div class="badge" style="background: var(--global)">
-                UN SDG Advocate
-            </div>
-            <p>Deloitte Vacation Work:<br>
-            Developed solutions for employee financial concerns</p>
-        </div>
-
-        <!-- 2023 - Academic Peak -->
-        <div class="milestone right academic">
-            <div class="year-tag">2023</div>
-            <h2><i class="fas fa-graduation-cap"></i> Dual Qualifications</h2>
-            <p>Completed with Distinction:
-                <ul>
-                    <li>BSc Actuarial Science</li>
-                    <li>Advanced Blockchain Diploma</li>
-                </ul>
-            </p>
-            <div class="badge" style="background: var(--tech)">
-                Blockchain Specialist
-            </div>
-        </div>
-
-        <!-- 2024 - Professional Growth -->
-        <div class="milestone left professional">
-            <div class="year-tag">2024</div>
-            <h2><i class="fas fa-briefcase"></i> Professional Acceleration</h2>
-            <p>Actuarial Modelling Trainee at Claxon Actuaries</p>
-            <ul>
-                <li>Python & Machine Learning</li>
-                <li>IFRS17 Implementation</li>
-            </ul>
-            <div class="badge" style="background: var(--professional)">
-                ASSA Exams in Progress
-            </div>
-        </div>
-
-        <!-- 2024 - Current Studies -->
-        <div class="milestone right academic">
-            <div class="year-tag">2024</div>
-            <h2><i class="fas fa-chart-line"></i> Advanced Studies</h2>
-            <p>BSc Honours in Mathematical Statistics<br>
-            <em>University of Free State</em></p>
-            <div class="badge" style="background: var(--academic)">
-                Current Focus: Predictive Analytics
-            </div>
-        </div>
-
-        <!-- 2024 - Global Leadership -->
-        <div class="milestone left global">
-            <div class="year-tag">2024</div>
-            <h2><i class="fas fa-rocket"></i> Global Leadership</h2>
-            <p>Aspire Leaders Program (Harvard)<br>
-            Global Youth Ambassador (TheirWorld)</p>
-            <div class="badge" style="background: var(--global)">
-                Emerging Leader
-            </div>
-        </div>
-
+    <div class="timeline-nav">
+        <div class="nav-dot active" data-year="2000"></div>
+        <div class="nav-dot" data-year="2018"></div>
+        <div class="nav-dot" data-year="2020"></div>
+        <div class="nav-dot" data-year="2021"></div>
+        <div class="nav-dot" data-year="2022"></div>
+        <div class="nav-dot" data-year="2023"></div>
+        <div class="nav-dot" data-year="2024"></div>
     </div>
+
+    <div class="timeline-container">
+        <div class="interactive-timeline">
+            <div class="timeline-line"></div>
+
+            <!-- 2000 - Birth -->
+            <div class="milestone">
+                <div class="timeline-year">2000</div>
+                <div class="content-block">
+                    <h2>The Journey Begins 👶</h2>
+                    <div class="category-tag" style="background: #ffe082; color: #6d4c41;">
+                        Foundation
+                    </div>
+                    <p>Born in South Africa, beginning a story of academic and professional excellence</p>
+                </div>
+            </div>
+
+            <!-- 2018 - Academic Start -->
+            <div class="milestone">
+                <div class="timeline-year">2018</div>
+                <div class="content-block">
+                    <h2>Academic Launchpad 🚀</h2>
+                    <div class="category-tag" style="background: var(--academic); color: white;">
+                        Education
+                    </div>
+                    <ul>
+                        <li>BSc Mathematical Science (Actuarial Science) at UJ</li>
+                        <li>Recipient of Nedbank Scholarship & UJ Merit Bursary</li>
+                    </ul>
+                    <div class="skill-meter">
+                        <div class="skill-item">
+                            <span>Mathematical Stats</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2020 - Tutoring & Leadership -->
+            <div class="milestone">
+                <div class="timeline-year">2020</div>
+                <div class="content-block">
+                    <h2>Dual Impact Year 💡</h2>
+                    <div class="category-tag" style="background: var(--leadership); color: white;">
+                        Leadership
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div>
+                            <h3>Founder, Tutoring Services</h3>
+                            <p>Established youth empowerment initiative:</p>
+                            <ul>
+                                <li>50+ students mentored</li>
+                                <li>Custom curriculum development</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Golden Key Leadership</h3>
+                            <ul>
+                                <li>Vice President & Graduate Advisor</li>
+                                <li>R30,000 budget management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2023 - Academic Peak -->
+            <div class="milestone">
+                <div class="timeline-year">2023</div>
+                <div class="content-block">
+                    <h2>Year of Distinction 🏆</h2>
+                    <div class="category-tag" style="background: var(--tech); color: white;">
+                        Technology
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h3>Academic Achievements</h3>
+                            <ul>
+                                <li>BSc Actuarial Science Completed</li>
+                                <li>Advanced Blockchain Diploma (Distinction)</li>
+                                <li>Top 10 DHL Gradstar Award</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Technical Skills</h3>
+                            <div class="skill-meter">
+                                <div class="skill-item">
+                                    <span>R Programming</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span>Python</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2024 - Current Endeavors -->
+            <div class="milestone">
+                <div class="timeline-year">2024</div>
+                <div class="content-block">
+                    <h2>Global Acceleration 🌍</h2>
+                    <div class="category-tag" style="background: var(--global); color: white;">
+                        International
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div>
+                            <h3>Professional Development</h3>
+                            <ul>
+                                <li>Claxon Actuaries: Python & IFRS17 Modeling</li>
+                                <li>ASSA Exams Progress (A112/N111)</li>
+                                <li>SME Growth Lab Accelerator</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Global Leadership</h3>
+                            <ul>
+                                <li>Aspire Leaders Program (Harvard)</li>
+                                <li>Global Youth Ambassador (TheirWorld)</li>
+                                <li>World Bank Youth Summit Delegate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Navigation
+        const dots = document.querySelectorAll('.nav-dot');
+        const milestones = document.querySelectorAll('.milestone');
+
+        function activateDot(index) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        function handleScroll() {
+            const scrollPos = window.scrollY;
+            milestones.forEach((milestone, index) => {
+                const rect = milestone.getBoundingClientRect();
+                if(rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
+                    activateDot(index);
+                }
+            });
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const target = milestones[index];
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
 </body>
 </html>

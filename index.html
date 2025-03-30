@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enock Soko - Life Journey</title>
+    <title>Enock Soko - Professional Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
-            --light: #ecf0f1;
+            --secondary: #3498db;
+            --accent: #27ae60;
+            --light: #f8f9fa;
         }
 
         body {
-            font-family: 'Merriweather', serif;
-            line-height: 1.8;
+            font-family: 'Segoe UI', system-ui;
+            line-height: 1.6;
             margin: 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: var(--light);
         }
 
         .container {
@@ -28,185 +28,169 @@
 
         .header {
             text-align: center;
-            margin-bottom: 50px;
-            animation: fadeIn 1s ease;
-        }
-
-        .header h1 {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .milestone {
-            position: relative;
-            margin-bottom: 50px;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateX(-20px);
-            opacity: 0;
-            animation: slideIn 0.6s forwards;
-        }
-
-        .milestone::before {
-            content: '';
-            position: absolute;
-            left: -34px;
-            top: 35px;
-            width: 20px;
-            height: 20px;
-            background: var(--secondary);
-            border-radius: 50%;
-            border: 4px solid white;
-        }
-
-        .year-tag {
-            position: absolute;
-            left: -100px;
-            top: 30px;
+            padding: 40px 0;
             background: var(--primary);
             color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: bold;
+            margin-bottom: 40px;
         }
 
-        .milestone-content h2 {
-            color: var(--primary);
-            margin-top: 0;
-            font-size: 1.8rem;
+        .badge-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
         }
 
-        .milestone-content p {
-            color: #495057;
-            margin: 15px 0;
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .tags {
-            margin-top: 20px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 5px 15px;
-            margin-right: 10px;
-            border-radius: 20px;
-            background: var(--light);
-            font-size: 0.9em;
+        .skill-meter {
+            background: #e0e0e0;
+            height: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
         }
 
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .skill-progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 5px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .certification-card {
+            padding: 15px;
+            border-left: 4px solid var(--secondary);
+            margin: 10px 0;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .timeline::before { left: 10px; }
-            .year-tag { left: -80px; }
-            .milestone { padding: 20px; }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline-item::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+    <div class="header">
+        <div class="container">
             <h1>Enock Soko</h1>
-            <p class="subtitle">A Journey Through Milestones</p>
+            <p class="subtitle">Actuarial Scientist & Tech Innovator</p>
+            <div class="badge-container">
+                <div class="badge">Top 10 DHL Gradstar</div>
+                <div class="badge">Golden Key Member</div>
+                <div class="badge">Blockchain Specialist</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Education -->
+        <div class="section">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="grid">
+                <div>
+                    <h3>University of Cape Town</h3>
+                    <p>Post Graduate Diploma in Actuarial Science (Current)</p>
+                </div>
+                <div>
+                    <h3>University of Johannesburg</h3>
+                    <p>BSc Actuarial Science</p>
+                    <p>Advanced Diploma in Blockchain (Distinction)</p>
+                </div>
+            </div>
         </div>
 
-        <div class="timeline">
-            <!-- 2000 - Born -->
-            <div class="milestone" style="animation-delay: 0.2s;">
-                <div class="year-tag">2000</div>
-                <div class="milestone-content">
-                    <h2><i class="fas fa-baby"></i> The Beginning</h2>
-                    <p>Born in <strong>[Birthplace]</strong>, marking the start of an extraordinary journey.</p>
-                    <div class="tags">
-                        <span class="tag">Family</span>
-                        <span class="tag">Roots</span>
+        <!-- Professional Credentials -->
+        <div class="section">
+            <h2><i class="fas fa-award"></i> Certifications</h2>
+            <div class="grid">
+                <div class="certification-card">
+                    <h4>Aspire Leaders Program (Harvard)</h4>
+                    <p>2024 | Leadership Development</p>
+                </div>
+                <div class="certification-card">
+                    <h4>AI in 4IR (NQF 5)</h4>
+                    <p>Advanced Artificial Intelligence Certification</p>
+                </div>
+                <!-- Add more certification cards -->
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <h2><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+            <div class="grid">
+                <div>
+                    <p>Python <span class="skill-level">(Intermediate)</span></p>
+                    <div class="skill-meter">
+                        <div class="skill-progress" style="width: 70%"></div>
                     </div>
                 </div>
-            </div>
-
-            <!-- 2018 - University -->
-            <div class="milestone" style="animation-delay: 0.4s;">
-                <div class="year-tag">2018</div>
-                <div class="milestone-content">
-                    <h2><i class="fas fa-university"></i> Academic Ascent</h2>
-                    <p>Began studying <strong>Actuarial Science</strong> at [University Name].</p>
-                    <p>Developed foundation in risk analysis and mathematical modeling.</p>
-                    <div class="tags">
-                        <span class="tag">Education</span>
-                        <span class="tag">Mathematics</span>
+                <div>
+                    <p>R Programming <span class="skill-level">(Advanced)</span></p>
+                    <div class="skill-meter">
+                        <div class="skill-progress" style="width: 85%"></div>
                     </div>
                 </div>
+                <!-- Add more skills -->
             </div>
+        </div>
 
-            <!-- 2020 - Tutoring -->
-            <div class="milestone" style="animation-delay: 0.6s;">
-                <div class="year-tag">2020</div>
-                <div class="milestone-content">
-                    <h2><i class="fas fa-chalkboard-teacher"></i> Entrepreneurial Leap</h2>
-                    <p>Founded <strong>Enock Soko Tutoring Services</strong>.</p>
-                    <p>Key achievements:</p>
-                    <ul>
-                        <li>Mentored 50+ students</li>
-                        <li>Developed custom curriculum</li>
-                        <li>95% student satisfaction rate</li>
-                    </ul>
-                    <div class="tags">
-                        <span class="tag">Leadership</span>
-                        <span class="tag">Education</span>
-                        <span class="tag">Business</span>
-                    </div>
+        <!-- Leadership -->
+        <div class="section">
+            <h2><i class="fas fa-users"></i> Leadership</h2>
+            <div class="timeline-item">
+                <h3>President, ASABA UJ Chapter</h3>
+                <p>03/2021 - 12/2024</p>
+                <ul>
+                    <li>Organized mentorship programs for 100+ students</li>
+                    <li>Won Best University Chapter Award</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>YOUNGA Youth Delegate</h3>
+                <p>Represented 130 countries in UN SDG initiatives</p>
+            </div>
+        </div>
+
+        <!-- Actuarial Exams -->
+        <div class="section">
+            <h2><i class="fas fa-file-alt"></i> Actuarial Progress</h2>
+            <div class="grid">
+                <div>
+                    <h4>A112: Business Economics</h4>
+                    <p>Exemption Achieved</p>
+                </div>
+                <div>
+                    <h4>N111: Foundation Practice</h4>
+                    <p>ASSA Certification</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Add smooth scroll and intersection observer for animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const milestones = document.querySelectorAll('.milestone');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateX(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            milestones.forEach(milestone => observer.observe(milestone));
-        });
+        // Add interactive elements here
     </script>
 </body>
 </html>
